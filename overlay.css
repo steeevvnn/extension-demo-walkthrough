@@ -345,18 +345,7 @@
   border-radius: 8px;
   box-shadow: 0 0 0 4px rgba(1, 118, 211, 0.2), 0 0 20px rgba(1, 118, 211, 0.4);
   background: rgba(1, 118, 211, 0.05);
-  transition: all 0.3s ease;
   z-index: 999998;
-  animation: dg-pulse 2s ease-in-out infinite;
-}
-
-@keyframes dg-pulse {
-  0%, 100% {
-    box-shadow: 0 0 0 4px rgba(1, 118, 211, 0.2), 0 0 20px rgba(1, 118, 211, 0.4);
-  }
-  50% {
-    box-shadow: 0 0 0 8px rgba(1, 118, 211, 0.15), 0 0 30px rgba(1, 118, 211, 0.5);
-  }
 }
 
 .dg-highlight-arrow {
@@ -365,7 +354,6 @@
   height: 40px;
   pointer-events: none;
   z-index: 999998;
-  animation: dg-bounce 1s ease-in-out infinite;
 }
 
 .dg-highlight-arrow svg {
@@ -373,15 +361,6 @@
   height: 100%;
   fill: #0176d3;
   filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.2));
-}
-
-@keyframes dg-bounce {
-  0%, 100% {
-    transform: translateY(0);
-  }
-  50% {
-    transform: translateY(-10px);
-  }
 }
 
 /* ==========================================
