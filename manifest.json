@@ -1,0 +1,36 @@
+{
+  "manifest_version": 3,
+  "name": "Demo Guide",
+  "version": "1.0.0",
+  "description": "Step-by-step guidance overlays for Salesforce Lightning demos",
+  "permissions": [
+    "activeTab",
+    "storage"
+  ],
+  "host_permissions": [
+    "https://*.lightning.force.com/*",
+    "https://*.my.salesforce.com/*"
+  ],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "content_scripts": [
+    {
+      "matches": [
+        "https://*.lightning.force.com/*",
+        "https://*.my.salesforce.com/*"
+      ],
+      "js": ["scriptData.js", "contentScript.js"],
+      "css": ["overlay.css"],
+      "run_at": "document_idle"
+    }
+  ],
+  "action": {
+    "default_title": "Toggle Demo Guide"
+  },
+  "icons": {
+    "16": "icons/icon16.png",
+    "48": "icons/icon48.png",
+    "128": "icons/icon128.png"
+  }
+}

@@ -1,0 +1,475 @@
+/**
+ * Demo Guide - Overlay Styles
+ * All classes prefixed with 'dg-' to avoid Salesforce conflicts
+ */
+
+/* ==========================================
+   ROOT CONTAINER
+   ========================================== */
+
+#demo-guide-root {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 0;
+  height: 0;
+  z-index: 999999;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  font-size: 14px;
+  line-height: 1.5;
+  color: #333;
+  pointer-events: none;
+}
+
+#demo-guide-root * {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+/* ==========================================
+   OVERLAY PANEL
+   ========================================== */
+
+.dg-overlay-panel {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  width: 400px;
+  max-width: calc(100vw - 48px);
+  max-height: calc(100vh - 48px);
+  background: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2), 0 2px 10px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  pointer-events: auto;
+  animation: dg-slide-in 0.3s ease-out;
+}
+
+@keyframes dg-slide-in {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ==========================================
+   HEADER
+   ========================================== */
+
+.dg-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px 20px;
+  background: linear-gradient(135deg, #0176d3 0%, #014486 100%);
+  color: #ffffff;
+}
+
+.dg-header-title {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 16px;
+  font-weight: 600;
+  letter-spacing: 0.3px;
+}
+
+.dg-header-icon {
+  width: 24px;
+  height: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.dg-header-icon svg {
+  width: 20px;
+  height: 20px;
+  fill: currentColor;
+}
+
+.dg-close-btn {
+  background: rgba(255, 255, 255, 0.15);
+  border: none;
+  border-radius: 6px;
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: background 0.2s ease;
+  color: #ffffff;
+}
+
+.dg-close-btn:hover {
+  background: rgba(255, 255, 255, 0.25);
+}
+
+.dg-close-btn svg {
+  width: 16px;
+  height: 16px;
+  fill: currentColor;
+}
+
+/* ==========================================
+   PROGRESS BAR
+   ========================================== */
+
+.dg-progress {
+  height: 4px;
+  background: #e5e5e5;
+  overflow: hidden;
+}
+
+.dg-progress-bar {
+  height: 100%;
+  background: linear-gradient(90deg, #04844b 0%, #0b8484 100%);
+  transition: width 0.4s ease;
+}
+
+/* ==========================================
+   CONTENT AREA
+   ========================================== */
+
+.dg-content {
+  padding: 20px;
+  max-height: 400px;
+  overflow-y: auto;
+}
+
+.dg-step-counter {
+  display: inline-block;
+  padding: 4px 12px;
+  background: #f3f3f3;
+  border-radius: 12px;
+  font-size: 12px;
+  font-weight: 500;
+  color: #666;
+  margin-bottom: 12px;
+}
+
+.dg-step-title {
+  font-size: 18px;
+  font-weight: 600;
+  color: #181818;
+  margin-bottom: 16px;
+  line-height: 1.3;
+}
+
+/* ==========================================
+   INSTRUCTION & TALK TRACK SECTIONS
+   ========================================== */
+
+.dg-section {
+  margin-bottom: 16px;
+}
+
+.dg-section:last-child {
+  margin-bottom: 0;
+}
+
+.dg-section-label {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  color: #666;
+  margin-bottom: 8px;
+}
+
+.dg-section-label svg {
+  width: 14px;
+  height: 14px;
+  fill: currentColor;
+}
+
+.dg-instructions {
+  padding: 12px 16px;
+  background: #fff8e5;
+  border-left: 3px solid #ffa500;
+  border-radius: 0 8px 8px 0;
+  font-size: 14px;
+  color: #5a4a00;
+}
+
+.dg-talk-track {
+  padding: 12px 16px;
+  background: #e5f5ff;
+  border-left: 3px solid #0176d3;
+  border-radius: 0 8px 8px 0;
+  font-size: 14px;
+  color: #003d73;
+  line-height: 1.6;
+}
+
+/* ==========================================
+   ELEMENT STATUS
+   ========================================== */
+
+.dg-element-status {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 14px;
+  border-radius: 8px;
+  font-size: 13px;
+  margin-top: 12px;
+}
+
+.dg-element-status--found {
+  background: #e5f9e7;
+  color: #0b5d1e;
+}
+
+.dg-element-status--searching {
+  background: #fff8e5;
+  color: #7a5c00;
+}
+
+.dg-element-status--not-found {
+  background: #fde7e7;
+  color: #a91b1b;
+}
+
+.dg-element-status svg {
+  width: 16px;
+  height: 16px;
+  fill: currentColor;
+  flex-shrink: 0;
+}
+
+.dg-spinner {
+  width: 16px;
+  height: 16px;
+  border: 2px solid #ffc107;
+  border-top-color: transparent;
+  border-radius: 50%;
+  animation: dg-spin 0.8s linear infinite;
+}
+
+@keyframes dg-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* ==========================================
+   FOOTER / NAVIGATION
+   ========================================== */
+
+.dg-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px 20px;
+  background: #f9f9f9;
+  border-top: 1px solid #e5e5e5;
+}
+
+.dg-nav-btn {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 10px 18px;
+  border: none;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.dg-nav-btn svg {
+  width: 16px;
+  height: 16px;
+  fill: currentColor;
+}
+
+.dg-nav-btn--prev {
+  background: #ffffff;
+  border: 1px solid #d8d8d8;
+  color: #444;
+}
+
+.dg-nav-btn--prev:hover:not(:disabled) {
+  background: #f5f5f5;
+  border-color: #c5c5c5;
+}
+
+.dg-nav-btn--next {
+  background: #0176d3;
+  color: #ffffff;
+}
+
+.dg-nav-btn--next:hover:not(:disabled) {
+  background: #014486;
+}
+
+.dg-nav-btn--finish {
+  background: #04844b;
+  color: #ffffff;
+}
+
+.dg-nav-btn--finish:hover:not(:disabled) {
+  background: #036339;
+}
+
+.dg-nav-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* ==========================================
+   HIGHLIGHT OVERLAY
+   ========================================== */
+
+.dg-highlight-box {
+  position: absolute;
+  pointer-events: none;
+  border: 3px solid #0176d3;
+  border-radius: 8px;
+  box-shadow: 0 0 0 4px rgba(1, 118, 211, 0.2), 0 0 20px rgba(1, 118, 211, 0.4);
+  background: rgba(1, 118, 211, 0.05);
+  transition: all 0.3s ease;
+  z-index: 999998;
+  animation: dg-pulse 2s ease-in-out infinite;
+}
+
+@keyframes dg-pulse {
+  0%, 100% {
+    box-shadow: 0 0 0 4px rgba(1, 118, 211, 0.2), 0 0 20px rgba(1, 118, 211, 0.4);
+  }
+  50% {
+    box-shadow: 0 0 0 8px rgba(1, 118, 211, 0.15), 0 0 30px rgba(1, 118, 211, 0.5);
+  }
+}
+
+.dg-highlight-arrow {
+  position: absolute;
+  width: 40px;
+  height: 40px;
+  pointer-events: none;
+  z-index: 999998;
+  animation: dg-bounce 1s ease-in-out infinite;
+}
+
+.dg-highlight-arrow svg {
+  width: 100%;
+  height: 100%;
+  fill: #0176d3;
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.2));
+}
+
+@keyframes dg-bounce {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+/* ==========================================
+   SCROLLBAR STYLING
+   ========================================== */
+
+.dg-content::-webkit-scrollbar {
+  width: 8px;
+}
+
+.dg-content::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 4px;
+}
+
+.dg-content::-webkit-scrollbar-thumb {
+  background: #c1c1c1;
+  border-radius: 4px;
+}
+
+.dg-content::-webkit-scrollbar-thumb:hover {
+  background: #a1a1a1;
+}
+
+/* ==========================================
+   MINIMIZED STATE
+   ========================================== */
+
+.dg-overlay-panel--minimized {
+  width: auto;
+  max-width: none;
+}
+
+.dg-overlay-panel--minimized .dg-content,
+.dg-overlay-panel--minimized .dg-footer,
+.dg-overlay-panel--minimized .dg-progress {
+  display: none;
+}
+
+.dg-overlay-panel--minimized .dg-header {
+  padding: 12px 16px;
+  cursor: pointer;
+}
+
+.dg-minimize-btn {
+  background: rgba(255, 255, 255, 0.15);
+  border: none;
+  border-radius: 6px;
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: background 0.2s ease;
+  color: #ffffff;
+  margin-right: 8px;
+}
+
+.dg-minimize-btn:hover {
+  background: rgba(255, 255, 255, 0.25);
+}
+
+.dg-minimize-btn svg {
+  width: 16px;
+  height: 16px;
+  fill: currentColor;
+}
+
+/* ==========================================
+   RESPONSIVE ADJUSTMENTS
+   ========================================== */
+
+@media (max-width: 480px) {
+  .dg-overlay-panel {
+    bottom: 12px;
+    right: 12px;
+    width: calc(100vw - 24px);
+  }
+
+  .dg-header {
+    padding: 12px 16px;
+  }
+
+  .dg-content {
+    padding: 16px;
+  }
+
+  .dg-footer {
+    padding: 12px 16px;
+  }
+
+  .dg-nav-btn {
+    padding: 8px 14px;
+    font-size: 13px;
+  }
+}
